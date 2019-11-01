@@ -27,11 +27,11 @@ $ git clone https://github.com/Alejandroid101/Async-Inn.git
 ### Visuals
 
 #### Application Start
-![Image 1](https://via.placeholder.com/750x500)
+![Image 1]()
 #### Using the Application
-![Image 1](https://via.placeholder.com/750x500)
+![Image 1]()
 #### Application End
-![Image 1](https://via.placeholder.com/750x500)
+![Image 1]()
 
 ---
 
