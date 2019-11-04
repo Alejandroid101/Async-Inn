@@ -27,9 +27,11 @@ $ git clone https://github.com/Alejandroid101/Async-Inn.git
 ### Visuals
 
 #### Application Start
-![Image 1]()
+Diagram from previous class(not in use)
+![Image 1](https://github.com/Alejandroid101/Async-Inn/blob/Async/assets/myDiagram.jpg?raw=true)
 #### Using the Application
-![Image 1]()
+Diagram from class (this is the one being used)
+![Image 1](https://github.com/Alejandroid101/Async-Inn/blob/Async/assets/realDiagram.png?raw=true)
 #### Application End
 ![Image 1]()
 
