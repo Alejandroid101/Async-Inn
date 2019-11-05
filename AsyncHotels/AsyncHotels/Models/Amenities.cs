@@ -9,5 +9,8 @@ namespace AsyncHotels.Models
     {
         public int ID { get; set; }
         public string Amenity { get; set; }
+
+        //Navigation Properties
+        public ICollection<RoomAmenities> RoomAmenities { get; set; }
     }
 }

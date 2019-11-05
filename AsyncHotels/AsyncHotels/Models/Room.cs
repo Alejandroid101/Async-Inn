@@ -10,7 +10,12 @@ namespace AsyncHotels.Models
         public int ID { get; set; }
         public string Nickname { get; set; }
         public Layout Layout { get; set; }
+
+        //Navigation Properties
+        public ICollection<HotelRoom> HotelRoom { get; set; }
+        public ICollection<RoomAmenities> RoomAmenities { get; set; }
     }
+
 
     public enum Layout
     {
