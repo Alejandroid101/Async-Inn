@@ -19,7 +19,7 @@ namespace AsyncHotels.Models
 
     public enum Layout
     {
-        Sturio = 0,
+        Studio = 0,
         OneBedroom = 1,
         TwoBedroom = 2
     }

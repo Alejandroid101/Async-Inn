@@ -38,6 +38,8 @@ Diagram from class (this is the one being used)
 ---
 
 ### Change Log
-1.1: *Added a Try/Catch/Finally for Question 2* - 5 Nov 2010  
+1.1: Added the MVC to the application and some folders.
+1.2 Added more folders, connected the database and seeded it.
+1.3 Added Bootstrap for style to index page
 
 ------------------------------

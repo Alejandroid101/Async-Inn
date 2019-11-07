@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AsyncHotels.Models.RoomAmenities>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="RoomAmenities">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amenities)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amenities.ID)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {  }) |
+                @Html.ActionLink("Delete", "Delete", new {  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
