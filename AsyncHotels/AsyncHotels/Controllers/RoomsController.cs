@@ -7,34 +7,34 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncHotels.Data;
 using AsyncHotels.Models;
+using AsyncHotels.Models.Interfaces;
 
 namespace AsyncHotels.Controllers
 {
     public class RoomsController : Controller
     {
-        private readonly AsyncDbContext _context;
+        private readonly IRoomManager _context;
 
-        public RoomsController(AsyncDbContext context)
+        public RoomsController(IRoomManager room)
         {
-            _context = context;
+            _context = room;
         }
 
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rooms.ToListAsync());
+            return View(await _context.GetRooms());
         }
 
         // GET: Rooms/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return NotFound();
             }
 
-            Room room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.ID == id);
+            Room room = await _context.GetRoomById(id);
             if (room == null)
             {
                 return NotFound();
@@ -58,22 +58,21 @@ namespace AsyncHotels.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(room);
-                await _context.SaveChangesAsync();
+                await _context.CreateRoom(room);
                 return RedirectToAction(nameof(Index));
             }
             return View(room);
         }
 
         // GET: Rooms/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return NotFound();
             }
 
-            var room = await _context.Rooms.FindAsync(id);
+            var room = await _context.GetRoomById(id);
             //ViewData["Layout"] = 
             if (room == null)
             {
@@ -98,12 +97,11 @@ namespace AsyncHotels.Controllers
             {
                 try
                 {
-                    _context.Update(room);
-                    await _context.SaveChangesAsync();
+                    await _context.UpdateRoom(room);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoomExists(room.ID))
+                    if (!await RoomExists(room.ID))
                     {
                         return NotFound();
                     }
@@ -118,21 +116,15 @@ namespace AsyncHotels.Controllers
         }
 
         // GET: Rooms/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return NotFound();
             }
 
-            var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (room == null)
-            {
-                return NotFound();
-            }
-
-            return View(room);
+            await _context.DeleteRoom(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Rooms/Delete/5
@@ -140,15 +132,18 @@ namespace AsyncHotels.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var room = await _context.Rooms.FindAsync(id);
-            _context.Rooms.Remove(room);
-            await _context.SaveChangesAsync();
+            await _context.DeleteRoom(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoomExists(int id)
+        private async Task<bool> RoomExists(int id)
         {
-            return _context.Rooms.Any(e => e.ID == id);
+            Room room = await _context.GetRoomById(id);
+            if(room != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
