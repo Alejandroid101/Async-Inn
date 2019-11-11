@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsyncHotels.Migrations
 {
     [DbContext(typeof(AsyncDbContext))]
-    [Migration("20191105072319_addedNavProps")]
-    partial class addedNavProps
+    [Migration("20191109022135_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,33 @@ namespace AsyncHotels.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Amenities");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Amenity = "Massage bed"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Amenity = "Turbo shower"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Amenity = "Hands-Free wipe toilet"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Amenity = "Holographic phone"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Amenity = "Botomless Hummus"
+                        });
                 });
 
             modelBuilder.Entity("AsyncHotels.Models.Hotel", b =>
@@ -43,23 +70,75 @@ namespace AsyncHotels.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HotelName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetAdress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Hotels");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            City = "Omaha",
+                            HotelName = "Bubbles Inn",
+                            Phone = "111-111-0000",
+                            State = "Idaho",
+                            StreetAdress = "1st street"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            City = "Springfield",
+                            HotelName = "Cuddles Inn",
+                            Phone = "222-222-2222",
+                            State = "Ohio",
+                            StreetAdress = "2nd street"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            City = "San Antonio",
+                            HotelName = "Puddles Inn",
+                            Phone = "333-333-3333",
+                            State = "Texas",
+                            StreetAdress = "3rd street"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            City = "Enumclaw",
+                            HotelName = "Dubbles Inn",
+                            Phone = "444-444-44444",
+                            State = "Washington",
+                            StreetAdress = "4th street"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            City = "Las Vegas",
+                            HotelName = "Wubbles Inn",
+                            Phone = "555-555-5555",
+                            State = "Nevada",
+                            StreetAdress = "5th street"
+                        });
                 });
 
             modelBuilder.Entity("AsyncHotels.Models.HotelRoom", b =>
@@ -102,6 +181,44 @@ namespace AsyncHotels.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Layout = 1,
+                            Nickname = "People's Republic of Ninight"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Layout = 0,
+                            Nickname = "Candle Light"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Layout = 2,
+                            Nickname = "Pumperschniquel"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Layout = 1,
+                            Nickname = "Live, Laugh, Love"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Layout = 0,
+                            Nickname = "Chicken Pot Pie"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Layout = 2,
+                            Nickname = "Smells like Christmas"
+                        });
                 });
 
             modelBuilder.Entity("AsyncHotels.Models.RoomAmenities", b =>

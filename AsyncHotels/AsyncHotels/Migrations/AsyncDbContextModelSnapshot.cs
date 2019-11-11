@@ -68,18 +68,23 @@ namespace AsyncHotels.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HotelName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetAdress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -92,7 +97,7 @@ namespace AsyncHotels.Migrations
                             ID = 1,
                             City = "Omaha",
                             HotelName = "Bubbles Inn",
-                            Phone = "111-111-1111",
+                            Phone = "111-111-0000",
                             State = "Idaho",
                             StreetAdress = "1st street"
                         },

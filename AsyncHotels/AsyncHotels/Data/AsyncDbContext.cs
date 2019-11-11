@@ -17,7 +17,7 @@ namespace AsyncHotels.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HotelRoom>().HasKey(hotelRoom =>
-           new { hotelRoom.HotelID, hotelRoom.RoomID });
+           new { hotelRoom.HotelID, hotelRoom.RoomID});
 
             modelBuilder.Entity<RoomAmenities>().HasKey(roomAmenities =>
             new { roomAmenities.AmenitiesID, roomAmenities.RoomID });
@@ -30,7 +30,7 @@ namespace AsyncHotels.Data
                     StreetAdress = "1st street",
                     City = "Omaha",
                     State = "Idaho",
-                    Phone = "111-111-1111"
+                    Phone = "111-111-0000"
                 },
                 new Hotel
                 {
