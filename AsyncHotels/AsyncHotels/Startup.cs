@@ -32,7 +32,7 @@ namespace AsyncHotels
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            
             string connectionString = Environment.IsDevelopment()
                     ? Configuration["ConnectionStrings:DefaultConnection"]
                     : Configuration["ConnectionStrings:ProductionConnection"];
@@ -52,7 +52,7 @@ namespace AsyncHotels
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseRouting();
             app.UseStaticFiles();
 
